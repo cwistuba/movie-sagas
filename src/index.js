@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./components/App/App.js";
 import registerServiceWorker from "./registerServiceWorker";
 import { createStore, combineReducers, applyMiddleware } from "redux";
+import { takeEvery, put } from "redux-saga/effects";
 // Provider allows us to use redux within our react app
 import { Provider } from "react-redux";
 import logger from "redux-logger";
