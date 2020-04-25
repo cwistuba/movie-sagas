@@ -33,8 +33,8 @@ const genres = (state = [], action) => {
 
 function* getMovies(action) {
   try {
-    const response = yield axios.get("/api/movies");
-    yield put({ type: "ADD_MOVIE", payload: response.data });
+    const response = yield axios.get("/api/movie");
+    yield put({ type: "SET_MOVIES", payload: response.data });
   } catch (error) {
     console.warn("Error with getMovies:", error);
   }
@@ -42,7 +42,7 @@ function* getMovies(action) {
 
 // Create the rootSaga generator function
 function* rootSaga() {
-  yield takeEvery("GET_PLANTS");
+  yield takeEvery("GET_MOVIE", getMovies);
 }
 
 // Create sagaMiddleware
