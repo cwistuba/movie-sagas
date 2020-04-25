@@ -1,13 +1,21 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import Movies from "../Movies/Movies";
 
 class AllMovies extends Component {
+  componentDidMount() {
+    this.props.dispatch({ type: "GET_MOVIE" });
+  }
+
   render() {
-    return (
-      <div>
-        <h1>All Movies</h1>
-      </div>
-    );
+    const movie = this.props.store.movies.map((movie, index) => {
+      return <Movies key={index} movie={movie} />;
+    });
+
+    return <div>{movie}</div>;
   }
 }
 
-export default AllMovies;
+const mapStoreToProps = (store) => ({ store });
+
+export default connect(mapStoreToProps)(AllMovies);

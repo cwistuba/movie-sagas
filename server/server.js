@@ -10,9 +10,9 @@ app.use(bodyParser.json()); // needed for angular requests
 app.use(express.static("build"));
 
 /** ---------- ROUTES ---------- **/
-app.use("/api/movie", movieRouter);
+app.use("/api", movieRouter);
 
 /** ---------- START SERVER ---------- **/
-app.listen(PORT, () => {
-  console.log(`Listening on port: ${PORT}`);
+app.listen(port, () => {
+  console.log("Listening on port: ", port);
 });

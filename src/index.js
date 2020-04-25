@@ -39,6 +39,12 @@ function* getMovies(action) {
   } catch (error) {
     console.warn("Error with getMovies:", error);
   }
+  try {
+    const response = yield axios.get("/api/genre");
+    yield put({ type: "SET_GENRES", payload: response.data });
+  } catch (error) {
+    console.warn("Error with getGenres:", error);
+  }
 }
 
 // Create the rootSaga generator function
