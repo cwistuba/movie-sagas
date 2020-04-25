@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 
 class Details_Page extends Component {
+  clickBack = (event) => {
+    this.props.history.push(`/`);
+  };
   render() {
     return (
       <div>
-        <h1>Movie Details</h1>
+        <button onClick={this.clickBack}>Back</button>
+        <button>Edit</button>
       </div>
     );
   }
