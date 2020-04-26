@@ -9,7 +9,7 @@ class Edit_Page extends Component {
     },
   };
   componentDidMount() {
-    this.props.dispatch({ type: "GET_MOVIES" });
+    this.props.dispatch({ type: "GET_MOVIE" });
   }
 
   changeInput = (input) => (event) => {
