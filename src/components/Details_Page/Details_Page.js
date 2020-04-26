@@ -22,6 +22,10 @@ class Details_Page extends Component {
     });
     console.log("filteredMovies:", filteredMovie);
 
+    const filteredGenre = this.props.store.genres.filter((genre) => {
+      return genre.id === id;
+    });
+
     return (
       <div>
         <button onClick={this.clickBack}>Back</button>
@@ -36,6 +40,23 @@ class Details_Page extends Component {
             );
           })}
         </div>
+        <br />
+        <h3>Genres</h3>
+        {filteredGenre.map((genre) => {
+          return (
+            <div key={genre.id}>
+              <div>
+                {genre.genre.map((type, index) => {
+                  return (
+                    <div key={index}>
+                      <i>{type}</i>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
       </div>
     );
   }
