@@ -5,7 +5,7 @@ const router = express.Router();
 
 // router.get
 router.get("/movie", (req, res) => {
-  const queryText = "SELECT * FROM movies";
+  const queryText = `SELECT * FROM movies ORDER BY id;`;
   pool
     .query(queryText)
     .then((result) => {
@@ -38,6 +38,29 @@ GROUP BY "movies".id`;
 // router.post
 
 // router.put
+router.put("/update/:id", (req, res) => {
+  const id = req.params.id;
+  console.log(id);
+
+  const updatedDescription = req.body;
+  console.log(updatedDescription);
+
+  const queryText = `UPDATE movies SET  title =$1, description =$2 WHERE id=$3`;
+
+  pool
+    .query(queryText, [
+      updatedDescription.title,
+      updatedDescription.description,
+      id,
+    ])
+    .then((responseDb) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log("Error completing SELECT movies query", err);
+      res.sendStatus(500);
+    });
+});
 
 // router.delete
 

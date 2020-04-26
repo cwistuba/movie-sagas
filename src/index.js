@@ -47,9 +47,18 @@ function* getMovies(action) {
   }
 }
 
+function* updateDescription(action) {
+  try {
+    yield axios.put(`/api/update/${action.payload.id}`, action.payload.update);
+  } catch (error) {
+    console.warn("Error with updating description:", error);
+  }
+}
+
 // Create the rootSaga generator function
 function* rootSaga() {
   yield takeEvery("GET_MOVIE", getMovies);
+  yield takeEvery("UPDATE_DESCRIPTION", updateDescription);
 }
 
 // Create sagaMiddleware

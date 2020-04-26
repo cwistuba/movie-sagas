@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 class Details_Page extends Component {
   componentDidMount() {
-    this.props.dispatch({ type: "GET_MOVIES" });
+    this.props.dispatch({ type: "GET_MOVIE" });
   }
   clickBack = (event) => {
     this.props.history.push(`/`);
